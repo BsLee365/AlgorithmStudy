@@ -29,6 +29,4 @@ for i in arrList:
     elif now[0] >= maxNum:
         now[0] = 5
         continue
-    print(now)
-
 print(now)
