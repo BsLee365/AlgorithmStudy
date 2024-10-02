@@ -1,5 +1,21 @@
 import sys
+input = sys.stdin.readline
+
+t = int(input())
+for _ in range(t):
+    price = 0
+    n = 0
+    mx = 0
+    n = int(input())
+    nlist = list(map(int, input().split(' ')))
+    for i in range(n-1, -1, -1):
+        if mx < nlist[i]:
+            mx = nlist[i]
+        else:
+            price = (mx - nlist[i]) + price
+    print(price)
 '''
+# 이렇게 풀면 무조건 다음 가격이 현재가격이 비쌀경우 팔기 때문에 옳바르지 못한 알고리즘이다.
 input = sys.stdin.readline
 t = int(input())
 pricelist = []
@@ -17,7 +33,6 @@ for _ in range(t):
             price -= nlist[i]
         # 팔고
         else:
-            # print('cnt > ', cnt, ' price > ', price, ' nlist[i] > ', nlist[i])
             price = (cnt * nlist[i]) - (-1*price)
             cnt = 0
     pricelist.append(price)
@@ -25,16 +40,3 @@ for _ in range(t):
 for i in pricelist:
     print(i, end=' ')
 '''
-
-# 다른 풀이
-for _ in range(int(input())):
-    n = int(input())
-    data = list(map(int, input().split()))
-    answer = 0
-    mx = data[-1]
-    for i in range(n-2, -1, -1):
-        if data[i] > mx:
-            mx = data[i]
-        else:
-            answer += mx-data[i]
-    print(answer)
